@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Year 3 Magnet Toy & Game DIY Project</title>
+  <style>
+    :root{
+      --bg:#ffffff;
+      --ink:#1b1b1b;
+      --muted:#555;
+      --card:#f6f7fb;
+      --accent:#1a73e8;
+      --good:#137333;
+      --warn:#b06000;
+      --bad:#b00020;
+      --line:#e6e7ee;
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--ink);
+      background:linear-gradient(180deg,#f9fbff, #ffffff 35%);
+    }
+    header{
+      padding:28px 16px 14px;
+      max-width:1050px;
+      margin:0 auto;
+    }
+    .title{
+      display:flex;
+      gap:14px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .badge{
+      background:var(--accent);
+      color:white;
+      padding:6px 10px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:13px;
+      letter-spacing:.2px;
+    }
+    h1{
+      margin:0;
+      font-size:clamp(24px, 3vw, 34px);
+      line-height:1.1;
+    }
+    .subtitle{
+      margin:10px 0 0;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.4;
+      max-width:70ch;
+    }
+    nav{
+      margin:18px 0 0;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    nav a{
+      text-decoration:none;
+      color:var(--accent);
+      background:white;
+      border:1px solid var(--line);
+      padding:10px 12px;
+      border-radius:999px;
+      font-weight:600;
+      font-size:14px;
+    }
+    nav a:hover{border-color:var(--accent)}
+    main{
+      max-width:1050px;
+      margin:0 auto;
+      padding:0 16px 42px;
+    }
+    section{
+      margin-top:18px;
+      background:white;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:0 8px 24px rgba(10,30,60,.06);
+    }
+    h2{
+      margin:0 0 10px;
+      font-size:20px;
+    }
+    p{margin:10px 0; line-height:1.5}
+    .grid{
+      display:grid;
+      gap:12px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:14px;
+    }
+    .card h3{margin:0 0 8px; font-size:16px}
+    .pill{
+      display:inline-block;
+      padding:4px 10px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:12px;
+      margin:4px 0 10px;
+      background:#eaf2ff;
+      color:var(--accent);
+    }
+    ul{margin:8px 0 0 18px; padding:0}
+    li{margin:6px 0; line-height:1.45}
+    .rules li{margin:8px 0}
+    .good{color:var(--good); font-weight:700}
+    .warn{color:var(--warn); font-weight:700}
+    .bad{color:var(--bad); font-weight:800}
+    .links a{
+      display:block;
+      text-decoration:none;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:12px;
+      background:white;
+      color:var(--ink);
+    }
+    .links a:hover{border-color:var(--accent)}
+    .links small{color:var(--muted)}
+    .steps{counter-reset: step}
+    .steps li{
+      list-style:none;
+      margin:10px 0;
+      padding:12px 12px 12px 44px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:white;
+      position:relative;
+    }
+    .steps li::before{
+      counter-increment: step;
+      content: counter(step);
+      position:absolute;
+      left:12px;
+      top:10px;
+      width:22px;
+      height:22px;
+      border-radius:999px;
+      display:grid;
+      place-items:center;
+      background:var(--accent);
+      color:white;
+      font-weight:800;
+      font-size:12px;
+    }
+    .print-note{
+      font-size:13px;
+      color:var(--muted);
+      border-left:4px solid var(--accent);
+      padding:10px 12px;
+      background:#f2f7ff;
+      border-radius:12px;
+    }
+    .btnrow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+    button{
+      border:1px solid var(--line);
+      background:white;
+      border-radius:999px;
+      padding:10px 12px;
+      font-weight:700;
+      cursor:pointer;
+    }
+    button:hover{border-color:var(--accent); color:var(--accent)}
+    textarea{
+      width:100%;
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:10px;
+      font: inherit;
+    }
+    @media print{
+      nav, .btnrow{display:none !important}
+      body{background:white}
+      section{box-shadow:none}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="title">
+      <span class="badge">SCIENCE • MAGNETS</span>
+      <h1>DIY Magnet Toy or Game Project</h1>
+    </div>
+    <p class="subtitle">
+      Use this page to learn, plan, and build a simple toy or game that uses <b>magnets</b>.
+      Work with your partner/group, test your idea, and explain how the magnets help your toy/game work.
+    </p>
+
+    <nav>
+      <a href="#ideas">Idea Links</a>
+      <a href="#rules">Safety Rules</a>
+      <a href="#steps">Project Steps</a>
+      <a href="#materials">Materials</a>
+      <a href="#groups">Our Groups</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="ideas">
+      <h2>Idea Links (Watch for Inspiration)</h2>
+      <p>Pick <b>one</b> idea (or mix two ideas) and make it your own. Remember: keep it safe and simple.</p>
+      <div class="grid links">
+        <a href="https://www.google.com.hk/search?newwindow=1&sca_esv=72ed8926a77c5d66&udm=7&q=making+DIY+toys+and+games+with+magnets&sa=X&ved=2ahUKEwikiuq28IeSAxVWMlkFHXigLwYQ8ccDKAJ6BAgbEAQ&biw=1470&bih=802&dpr=2&aic=0#fpstate=ive&ip=1&vld=cid:63163f6c,vid:8kbInWihnbY,st:0" target="_blank" rel="noopener">
+          <b>Video idea #1</b><br><small>DIY toys & games with magnets</small>
+        </a>
+        <a href="https://www.google.com.hk/search?newwindow=1&sca_esv=72ed8926a77c5d66&udm=7&q=making+DIY+toys+and+games+with+magnets&sa=X&ved=2ahUKEwikiuq28IeSAxVWMlkFHXigLwYQ8ccDKAJ6BAgbEAQ&biw=1470&bih=802&dpr=2&aic=0#fpstate=ive&ip=1&vld=cid:6d714c85,vid:t4Q258wbKuM,st:0" target="_blank" rel="noopener">
+          <b>Video idea #2</b><br><small>DIY toys & games with magnets</small>
+        </a>
+        <a href="https://www.google.com.hk/search?newwindow=1&sca_esv=72ed8926a77c5d66&cs=0&q=Magnetic+slime+recipe&sa=X&ved=2ahUKEwjtjtrA8IeSAxWLE1kFHX8bGrcQpboHKAF6BAgCEAM&biw=1470&bih=802&dpr=2&aic=0#fpstate=ive&vld=cid:5c936482,vid:bIfo0anMI98,st:0" target="_blank" rel="noopener">
+          <b>Magnetic slime (idea)</b><br><small>Only with teacher approval + adult help</small>
+        </a>
+        <a href="https://www.google.com.hk/search?q=making+DIY+toys+and+games+with+magents&oq=making+DIY+toys+and+games+with+magents&aqs=chrome..69i57j69i64.6233805j0j15&sourceid=chrome&ie=UTF-8#fpstate=ive&vld=cid:8f27fe22,vid:0KY4Q2_ucQE,st:0" target="_blank" rel="noopener">
+          <b>Video idea #3</b><br><small>More magnetic game ideas</small>
+        </a>
+      </div>
+      <div class="btnrow">
+        <button onclick="window.print()">Print this page</button>
+        <button onclick="document.getElementById('groups').scrollIntoView({behavior:'smooth'})">Jump to Groups</button>
+      </div>
+    </section>
+
+    <section id="rules">
+      <h2>Safety Rules (Must Follow)</h2>
+      <ul class="rules">
+        <li><span class="bad">Never put magnets near your mouth or nose.</span> Small magnets can be dangerous if swallowed.</li>
+        <li><span class="warn">Keep magnets away from phones, tablets, computers, and credit cards.</span></li>
+        <li>Use <b>tape/glue</b> carefully. Ask an adult/teacher for help with scissors or hot glue.</li>
+        <li><span class="good">Make safe toys and games.</span> No “weapons” or anything that can hurt someone.</li>
+        <li>Clean up small pieces so nobody steps on them.</li>
+      </ul>
+      <p class="print-note"><b>Teacher note:</b> If you choose slime, it must be <u>teacher-approved</u> with adult help.</p>
+    </section>
+
+    <section id="steps">
+      <h2>Project Steps</h2>
+      <ol class="steps">
+        <li><b>Choose your idea</b> (toy or game). What will it do?</li>
+        <li><b>Plan</b>: draw a quick sketch and list materials.</li>
+        <li><b>Build</b> a first version (prototype).</li>
+        <li><b>Test</b>: does it work? What needs fixing?</li>
+        <li><b>Improve</b>: change one thing to make it better.</li>
+        <li><b>Explain the science</b>: Are the magnets <b>attracting</b> (pulling) or <b>repelling</b> (pushing)? Where are the poles?</li>
+        <li><b>Share</b>: short demo + 2–3 sentences about how magnets help.</li>
+      </ol>
+    </section>
+
+    <section id="materials">
+      <h2>Materials You Can Use</h2>
+      <div class="grid">
+        <div class="card">
+          <span class="pill">Magnets</span>
+          <ul>
+            <li>Small bar/disc magnets</li>
+            <li>Magnetic wand (if available)</li>
+            <li>Paper clips (magnet attracts metal)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="pill">Build items</span>
+          <ul>
+            <li>Cardboard, paper, cups</li>
+            <li>Bottle caps, straws, string</li>
+            <li>Wooden sticks, LEGO, blocks</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="pill">Tools</span>
+          <ul>
+            <li>Tape, glue, rubber bands</li>
+            <li>Scissors (adult help)</li>
+            <li>Markers for labels</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="pill">Science words</span>
+          <ul>
+            <li><b>Attract</b> = pull together</li>
+            <li><b>Repel</b> = push apart</li>
+            <li><b>Poles</b> = N and S ends</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="groups">
+      <h2>Our Groups</h2>
+      <p>Each group chooses one toy/game idea and writes their plan below (you can type into the boxes).</p>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Slime Game</h3>
+          <p><b>Group:</b> Jackson + Sophia</p>
+          <p><b>Plan:</b><br>
+            <textarea rows="5" placeholder="What are you making? What materials do you need? How do magnets help?"></textarea>
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>(Choose a name!)</h3>
+          <p><b>Group:</b> Arthur + Kai</p>
+          <p><b>Plan:</b><br>
+            <textarea rows="5" placeholder="What are you making? What materials do you need? How do magnets help?"></textarea>
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Bottle Cap Game</h3>
+          <p><b>Group:</b> (Group name: Bottle cap)</p>
+          <p><b>Plan:</b><br>
+            <textarea rows="5" placeholder="What are you making? What materials do you need? How do magnets help?"></textarea>
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Rocket on a Boat</h3>
+          <p><b>Group:</b> Edward + Roman</p>
+          <p><b>Plan:</b><br>
+            <textarea rows="5" placeholder="What are you making? What materials do you need? How do magnets help?"></textarea>
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>(Choose a name!)</h3>
+          <p><b>Group:</b> Eric + Ricky</p>
+          <p><b>Plan:</b><br>
+            <textarea rows="5" placeholder="What are you making? What materials do you need? How do magnets help?"></textarea>
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Magnetic Target Game</h3>
+          <p><b>Group:</b> (was written as “Magnetic gun”)</p>
+          <p class="print-note">We’re changing this to a <b>safe</b> idea: a <b>target game</b> that uses magnets to move pieces (not a weapon).</p>
+          <p><b>Plan:</b><br>
+            <textarea rows="5" placeholder="What are you making? What materials do you need? How do magnets help?"></textarea>
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Flying House</h3>
+          <p><b>Group:</b> Bella + Matt</p>
+          <p><b>Plan:</b><br>
+            <textarea rows="5" placeholder="What are you making? What materials do you need? How do magnets help?"></textarea>
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Feed the Shark</h3>
+          <p><b>Group:</b> Sofia (S) + Davi</p>
+          <p><b>Plan:</b><br>
+            <textarea rows="5" placeholder="What are you making? What materials do you need? How do magnets help?"></textarea>
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Flying House</h3>
+          <p><b>Group:</b> Olivia + Yvonne</p>
+          <p><b>Plan:</b><br>
+            <textarea rows="5" placeholder="What are you making? What materials do you need? How do magnets help?"></textarea>
+          </p>
+        </div>
+      </div>
+
+      <p class="print-note">
+        <b>Save your work:</b> If you type in the boxes, copy your plan into Seesaw/your notebook before closing the page.
+      </p>
+    </section>
+  </main>
+
+  <footer style="max-width:1050px;margin:0 auto;padding:0 16px 28px;color:#555;font-size:13px;">
+    <p><b>Tip:</b> The best projects are simple, fun, and easy to explain. Show where the magnets are hidden and describe what they do.</p>
+  </footer>
+</body>
+</html>
